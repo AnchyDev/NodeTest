@@ -1,0 +1,9 @@
+{
+    "name": "socket-io-example",
+    "version": "0.0.1",
+    "description": "Example project for Express & Socket.IO",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.6.1"
+    }
+}
