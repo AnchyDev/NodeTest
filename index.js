@@ -22,14 +22,22 @@ app.get('/', (req, res) => {
 app.use(express.static('static'));
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
-    socket.on('chat message', (msg) => {
-        console.log(`User ${socket.id}: ${msg}`);
-		socket.emit('chat message', 'Hello World!');
-    });
+  console.log(`User ${socket.id} connected`);
+
+  socket.on('disconnect', () => {
+    console.log(`User ${socket.id} connected`);
+  });
+
+  socket.on('chat message', (msg) => {
+    let args = msg.lower().split(' ');
+    switch(args[0])
+    {
+      case "echo":
+        socket.emit('chat message', args.join(' '));
+        break;
+    }
+    console.log(`User ${socket.id} executed command '${args[0]}'.`);
+  });
 });
 
 sslServer.listen(443, () => {
