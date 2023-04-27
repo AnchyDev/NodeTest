@@ -28,12 +28,12 @@ io.on('connection', (socket) => {
     console.log(`User ${socket.id} connected`);
   });
 
-  socket.on('chat message', (msg) => {
+  socket.on('cmsg', (msg) => {
     let args = msg.toLowerCase().split(' ');
     switch(args[0])
     {
       case "echo":
-        socket.emit('chat message', args.join(' '));
+        socket.emit('cmsg', args.slice(1).join(' '));
         break;
     }
     console.log(`User ${socket.id} executed command '${args[0]}'.`);
