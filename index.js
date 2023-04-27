@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
+const https = require('https');
+
+var privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
+var certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
+
+const sslServer = https.createServer({
+	key: privateKey,
+	cert: certificate
+}, app);
+
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(sslServer);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -22,6 +30,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(80, () => {
-  console.log('listening on *:80');
+sslServer.listen(443, () => {
+  console.log('listening on *:443');
 });
