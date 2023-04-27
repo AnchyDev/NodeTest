@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('chat message', (msg) => {
-    let args = msg.lower().split(' ');
+    let args = msg.toLowerCase().split(' ');
     switch(args[0])
     {
       case "echo":
