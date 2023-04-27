@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const https = require('https');
 
+var fs = require("fs");
+
 var privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
 var certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
 
