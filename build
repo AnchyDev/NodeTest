@@ -3,7 +3,7 @@
 echo Building project..
 start=$SECONDS
 
-echo Copying views..
+echo Copying static files..
 cp -r ./src/static ./bin/static
 echo Done.
 

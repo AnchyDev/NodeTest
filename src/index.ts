@@ -3,6 +3,10 @@ import https from 'https';
 import fs from 'fs';
 import { Server } from 'socket.io';
 
+let testClass = new TestClass();
+testClass.message = "Test";
+console.log(testClass.message);
+
 const app = express();
 let privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
 let certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
