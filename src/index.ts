@@ -2,6 +2,7 @@ import express from 'express';
 import https from 'https';
 import fs from 'fs';
 import { Server } from 'socket.io';
+import { TestClass } from './helper';
 
 let testClass = new TestClass();
 testClass.message = "Test";

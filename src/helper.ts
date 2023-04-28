@@ -1,3 +1,3 @@
-class TestClass {
+export class TestClass {
     message: string = "Hello World!";
 }
