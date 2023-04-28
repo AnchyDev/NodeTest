@@ -1,18 +1,17 @@
-const express = require('express');
+import express from 'express';
+import https from 'https';
+import fs from 'fs';
+import { Server } from 'socket.io';
+
 const app = express();
-const https = require('https');
-
-var fs = require("fs");
-
-var privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
-var certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
+let privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
+let certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
 
 const sslServer = https.createServer({
 	key: privateKey,
 	cert: certificate
 }, app);
 
-const { Server } = require("socket.io");
 const io = new Server(sslServer);
 
 app.get('/', (req, res) => {
@@ -20,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('static'));
+
 
 io.on('connection', (socket) => {
   console.log(`User ${socket.id} connected`);
