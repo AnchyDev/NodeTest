@@ -2,7 +2,14 @@
 
 echo Building project..
 start=$SECONDS
+
+echo Copying views..
 cp -r ./src/views ./bin/views
+echo Done.
+
+echo Transpiling TypeScript..
 tsc
+echo Done.
+
 duration=$(( SECONDS - start ))
 echo Finished building in ${duration}s.
