@@ -4,7 +4,7 @@ echo Building project..
 start=$SECONDS
 
 echo Copying views..
-cp -r ./src/views ./bin/views
+cp -r ./src/static ./bin/static
 echo Done.
 
 echo Transpiling TypeScript..
