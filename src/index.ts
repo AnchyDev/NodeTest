@@ -15,10 +15,10 @@ const sslServer = https.createServer({
 const io = new Server(sslServer);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/static/views/index.html');
 });
 
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/static'));
 
 
 io.on('connection', (socket) => {
