@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
     console.log(`User ${socket.id} connected`);
   });
 
-  socket.on('cmsg', (msg) => {
+  socket.on('cmsg', (msg:string) => {
     let args = msg.toLowerCase().split(' ');
     switch(args[0])
     {
