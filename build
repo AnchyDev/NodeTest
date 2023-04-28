@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo Building project..
+start=$SECONDS
+cp ./src/views ./bin/views
+tsc
+duration=$(( SECONDS - start ))
+echo Finished building in ${duration}s.
