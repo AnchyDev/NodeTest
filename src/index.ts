@@ -2,19 +2,14 @@ import express from 'express';
 import https from 'https';
 import fs from 'fs';
 import { Server } from 'socket.io';
-import { TestClass } from './helper';
-
-let testClass = new TestClass();
-testClass.message = "Test";
-console.log(testClass.message);
 
 const app = express();
 let privateKey = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/privkey.pem' );
 let certificate = fs.readFileSync( '/etc/letsencrypt/live/anchy.dev/fullchain.pem' );
 
 const sslServer = https.createServer({
-	key: privateKey,
-	cert: certificate
+  key: privateKey,
+  cert: certificate
 }, app);
 
 const io = new Server(sslServer);
