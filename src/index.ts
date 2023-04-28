@@ -15,7 +15,7 @@ const sslServer = https.createServer({
 const io = new Server(sslServer);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile('../index.html');
 });
 
 app.use(express.static('static'));
