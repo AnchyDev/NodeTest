@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo Starting NodeJS project.
+sudo nodejs ./bin/index.js
